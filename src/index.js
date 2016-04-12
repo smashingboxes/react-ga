@@ -12,6 +12,7 @@
 
 var _redacted = 'REDACTED (Potential Email Address)';
 var _debug = false;
+var _titleToCase = true;
 
 function warn(s) {
   console.warn('[react-ga]', s);
@@ -41,6 +42,10 @@ function removeLeadingSlash(s) {
  * https://github.com/gouch/to-title-case
  */
 function toTitleCase(s) {
+  if (_titleToCase === false) {
+    return s;
+  }
+
   var smallWords = /^(a|an|and|as|at|but|by|en|for|if|in|nor|of|on|or|per|the|to|vs?\.?|via)$/i;
   s = trim(s);
 
@@ -90,6 +95,10 @@ var reactGA = {
     if (options) {
       if (options.debug && options.debug === true) {
         _debug = true;
+      }
+
+      if (options.titleToCase && options.titleToCase === false) {
+        _titleToCase = false;
       }
     }
 

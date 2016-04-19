@@ -97,7 +97,7 @@ var reactGA = {
         _debug = true;
       }
 
-      if (options.titleToCase && options.titleToCase === false) {
+      if (options.titleToCase === false) {
         _titleToCase = false;
       }
     }
